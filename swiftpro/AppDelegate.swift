@@ -10,7 +10,7 @@ The xcodeproj file contains project configuration data and links to files refere
  */
 
 /**
- Root object.
+ This class is your Root object.
  
  Manages you app's shared behaviours.
  
