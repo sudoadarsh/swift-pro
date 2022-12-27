@@ -1,0 +1,6 @@
+framework module Pods_swiftpro_swiftproUITests {
+  umbrella header "Pods-swiftpro-swiftproUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
