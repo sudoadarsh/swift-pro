@@ -17,6 +17,8 @@
 		C73DF7B92938BBEB0098F018 /* swiftproTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73DF7B82938BBEB0098F018 /* swiftproTests.swift */; };
 		C73DF7C32938BBEB0098F018 /* swiftproUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73DF7C22938BBEB0098F018 /* swiftproUITests.swift */; };
 		C73DF7C52938BBEB0098F018 /* swiftproUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73DF7C42938BBEB0098F018 /* swiftproUITestsLaunchTests.swift */; };
+		C763EE1C295AC3BD00ED2115 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C763EE1B295AC3BD00ED2115 /* Stack.swift */; };
+		C763EE1E295AC4E000ED2115 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C763EE1D295AC4E000ED2115 /* Queue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		C73DF7BE2938BBEB0098F018 /* swiftproUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = swiftproUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C73DF7C22938BBEB0098F018 /* swiftproUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftproUITests.swift; sourceTree = "<group>"; };
 		C73DF7C42938BBEB0098F018 /* swiftproUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftproUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C763EE1B295AC3BD00ED2115 /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
+		C763EE1D295AC4E000ED2115 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,8 +105,8 @@
 		C73DF79D2938BBE90098F018 /* swiftpro */ = {
 			isa = PBXGroup;
 			children = (
-				C73DF79E2938BBE90098F018 /* AppDelegate.swift */,
-				C73DF7A02938BBE90098F018 /* SceneDelegate.swift */,
+				C763EE1A295AC39C00ED2115 /* DataStructures */,
+				C763EE19295AC38400ED2115 /* Root */,
 				C73DF7A22938BBE90098F018 /* ViewController.swift */,
 				C73DF7A42938BBE90098F018 /* Main.storyboard */,
 				C73DF7AA2938BBEA0098F018 /* Assets.xcassets */,
@@ -128,6 +132,24 @@
 				C73DF7C42938BBEB0098F018 /* swiftproUITestsLaunchTests.swift */,
 			);
 			path = swiftproUITests;
+			sourceTree = "<group>";
+		};
+		C763EE19295AC38400ED2115 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				C73DF79E2938BBE90098F018 /* AppDelegate.swift */,
+				C73DF7A02938BBE90098F018 /* SceneDelegate.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		C763EE1A295AC39C00ED2115 /* DataStructures */ = {
+			isa = PBXGroup;
+			children = (
+				C763EE1B295AC3BD00ED2115 /* Stack.swift */,
+				C763EE1D295AC4E000ED2115 /* Queue.swift */,
+			);
+			path = DataStructures;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +284,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C73DF7A32938BBE90098F018 /* ViewController.swift in Sources */,
+				C763EE1E295AC4E000ED2115 /* Queue.swift in Sources */,
+				C763EE1C295AC3BD00ED2115 /* Stack.swift in Sources */,
 				C73DF79F2938BBE90098F018 /* AppDelegate.swift in Sources */,
 				C73DF7A12938BBE90098F018 /* SceneDelegate.swift in Sources */,
 				C73DF7A92938BBE90098F018 /* swiftpro.xcdatamodeld in Sources */,
