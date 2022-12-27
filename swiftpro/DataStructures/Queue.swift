@@ -88,3 +88,51 @@ struct OptimisedQueue<T> {
     }
     
 }
+
+// MARK: - Deque (Deck) double ended queue.
+
+struct Deque<T> {
+    
+    // The storage.
+    private var storage:[T?] = []
+    
+    // The count.
+    var count: Int {
+        return storage.count
+    }
+    
+    // To check if the storage is empty.
+    var isEmpty: Bool {
+        return storage.isEmpty
+    }
+    
+    // Enqueue.
+    mutating func enqueue(element: T) {
+        storage.append(element)
+    }
+    
+    // Enqueue at the front.
+    mutating func enqueueFront(element: T) {
+        storage.insert(element, at: 0)
+    }
+    
+    // Dequeue.
+    mutating func dequeue() -> T? {
+        
+        if !isEmpty {
+            return storage.removeFirst()
+        }
+        
+        return nil
+    }
+    
+    // Dequeue from the back.
+    mutating func dequeueBack() -> T? {
+        
+        if !isEmpty {
+            return storage.removeLast()
+        }
+        
+        return nil
+    }
+}
