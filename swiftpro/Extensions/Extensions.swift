@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - UIButton extension.
 extension UIButton {
-    func beautify() {
+    func buttonBeautify() {
         self.layer.borderColor = self.backgroundColor?.cgColor
         self.layer.cornerRadius = 10
         self.layer.borderWidth = 2
@@ -21,8 +21,7 @@ extension UIButton {
 // MARK: - UITextField extension.
 extension UITextField {
     
-    
-    func beautify() {
+    func tfBeautify() {
         
         self.backgroundColor = UIColor.white
         self.layer.borderWidth = 1
@@ -36,6 +35,11 @@ extension UITextField {
 
 // MARK: - Constraints Extension.
 extension UIView {
+    
+    // Beautify.
+    func beautify(radius: Double) {
+        self.layer.cornerRadius = radius
+    }
         
     // Center a UI element in the center of a View.
     func centerInSuperview(_ sender: UIView) {
@@ -60,5 +64,49 @@ extension UIView {
         self.trailingAnchor.constraint(equalTo: sender.trailingAnchor, constant: -8.0).isActive = true
         self.leadingAnchor.constraint(equalTo: sender.leadingAnchor, constant: 8.0).isActive = true
     }
+    
+    func attachToTop(_ sender: UIView, top: Double, trailing: Double, leading: Double) {
+        self.translatesAutoresizingMaskIntoConstraints = false
+
+        self.topAnchor.constraint(equalTo: sender.topAnchor, constant: top).isActive = true
+        self.trailingAnchor.constraint(equalTo: sender.trailingAnchor, constant: trailing).isActive = true
+        self.leadingAnchor.constraint(equalTo: sender.leadingAnchor, constant: leading).isActive = true
+    }
+    
+    
+    // Attach the UI element to the bottom of the screen.
+    func attachToBottom(_ sender: UIView) {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.bottomAnchor.constraint(equalTo: sender.bottomAnchor, constant: -8).isActive = true
+        self.trailingAnchor.constraint(equalTo: sender.trailingAnchor, constant: -8.0).isActive = true
+        self.leadingAnchor.constraint(equalTo: sender.leadingAnchor, constant: 8.0).isActive = true
+    }
+    
+    func attachToBottom(_ sender: UIView, bottom: Double, trailing: Double, leading: Double) {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.bottomAnchor.constraint(equalTo: sender.bottomAnchor, constant: -bottom).isActive = true
+        self.trailingAnchor.constraint(equalTo: sender.trailingAnchor, constant: -trailing).isActive = true
+        self.leadingAnchor.constraint(equalTo: sender.leadingAnchor, constant: leading).isActive = true
+    }
+    
+    func attachAround(_ sender: UIView, bottom: Double, trailing: Double, leading: Double, top: Double) {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.topAnchor.constraint(equalTo: sender.topAnchor, constant: top).isActive = true
+        self.bottomAnchor.constraint(equalTo: sender.bottomAnchor, constant: -bottom).isActive = true
+        self.trailingAnchor.constraint(equalTo: sender.trailingAnchor, constant: -trailing).isActive = true
+        self.leadingAnchor.constraint(equalTo: sender.leadingAnchor, constant: leading).isActive = true
+    }
+    
+    func attachAround(_ sender: UIView) {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.topAnchor.constraint(equalTo: sender.topAnchor, constant: 8).isActive = true
+        self.bottomAnchor.constraint(equalTo: sender.bottomAnchor, constant: -8).isActive = true
+        self.trailingAnchor.constraint(equalTo: sender.trailingAnchor, constant: -8.0).isActive = true
+        self.leadingAnchor.constraint(equalTo: sender.leadingAnchor, constant: 8.0).isActive = true
+    }
+    
     
 }

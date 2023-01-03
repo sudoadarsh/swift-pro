@@ -5,6 +5,8 @@
 //  Created by Adarsh Sudarsanan on 28/12/22.
 //
 
+// MARK: - String constants.
+
 struct StringConstants {
     static let login: String = "Login"
     static let username: String = "Username"
@@ -14,6 +16,9 @@ struct StringConstants {
     static let dontHaveAnAccount: String = "Don't have an account? Sign-in"
     static let appDisplayName: String = "Uncharted"
 }
+
+
+// MARK: - Asset Constants.
 
 struct AssetConstants {
     static let google: String = "google.png"
