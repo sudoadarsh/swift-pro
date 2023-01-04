@@ -11,14 +11,16 @@ import UIKit
  This screen is build programatically.
  Learning outcomes:
     1. Layout constraints
-    2.  Adding height and width to [UIImageView]
+    2. Adding height and width to [UIImageView]
     3. Adding subviews in a stack programatically
+    4. Moving the View up when keyboard is visible.
+    5. Always remeber to add delegates.
+    6. Basic Animations in swift.
  */
 
 class LoginViewController: UIViewController {
     
     // MARK: Class properties.
-    
     private lazy var appLogo: UIImageView = UIImageView()
     private lazy var appName: UILabel = UILabel()
     private lazy var loginButton: UIButton = UIButton()
@@ -26,20 +28,58 @@ class LoginViewController: UIViewController {
     private lazy var passwordTF: UITextField = UITextField()
     private lazy var stackView = UIStackView()
     
-    // MARK: - App life cycle.
+    private var activeTF: UITextField?
     
+    // MARK: - App life cycle.
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // The background color.
         view.backgroundColor = ColorConstants.backgroundColor
         
+        // The keyboard show/ hide listeners.
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardVisible), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardHidden), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        // Adding the class to the delegate of UITextFields.
+        self.usernameTF.delegate = self
+        self.passwordTF.delegate = self
+        
         setupUI()
+    }
+    
+    // MARK: IB actions.
+    @objc private func keyboardVisible(notification: NSNotification) {
+        
+        // Get the Size of the keyboard.
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+            return
+        }
+        
+        // Get the bottom of active TF.
+        if let activeTF = activeTF {
+            let bottomOfTF = activeTF.convert(activeTF.bounds, to: self.view).maxY
+            let topOfKeyboard = self.view.frame.height - keyboardSize.height
+            self.view.layoutIfNeeded()
+            if bottomOfTF > topOfKeyboard {
+                UIView.animate(withDuration: 0.3, animations: { () -> Void in
+                    self.view.frame.origin.y = 0 - keyboardSize.height
+                    self.view.layoutIfNeeded()
+                })
+            }
+        }
+        
+        
+    }
+    
+    @objc private func keyboardHidden(notification: NSNotification) {
+        
+        // Set the axis of the screen back to normal.
+        self.view.frame.origin.y = 0
     }
         
     
     // MARK: - Class methods.
-    
     private func setupUI() {
         
         // 1. Setup the app Logo.
@@ -120,4 +160,31 @@ class LoginViewController: UIViewController {
         }
     }
     
+    private func manageTFResponder() {
+        switch activeTF {
+        case self.usernameTF:
+            self.passwordTF.becomeFirstResponder()
+        default:
+            self.passwordTF.resignFirstResponder()
+        }
+    }
+    
+}
+
+// MARK: - UI Text Field delegate.
+extension LoginViewController: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.activeTF = textField
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.activeTF = nil
+    }
+    
+    // To close the keyboard when user is presses [Return].
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.manageTFResponder()
+        return false
+    }
 }
