@@ -21,16 +21,24 @@ import UIKit
 class LoginViewController: UIViewController {
     
     // MARK: Class properties.
+    
     private lazy var appLogo: UIImageView = UIImageView()
     private lazy var appName: UILabel = UILabel()
     private lazy var loginButton: UIButton = UIButton()
     private lazy var usernameTF: UITextField = UITextField()
-    private lazy var passwordTF: UITextField = UITextField()
+    private lazy var passwordTF: ASPasswordTF = ASPasswordTF()
     private lazy var stackView = UIStackView()
-    
     private var activeTF: UITextField?
+    private lazy var usernameVE: UILabel = UILabel()
+    private lazy var passwordVE: UILabel = UILabel()
+    private lazy var appVersion: UILabel = UILabel()
+    private lazy var eyeSlash: UIImageView = UIImageView(image: SystemIconConstants.eyeSlash)
+    private lazy var eye: UIImageView = UIImageView(image: SystemIconConstants.eye)
+    private lazy var lock: UIImageView = UIImageView(image: SystemIconConstants.lock)
+    private lazy var person: UIImageView = UIImageView(image: SystemIconConstants.person)
     
     // MARK: - App life cycle.
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,6 +57,7 @@ class LoginViewController: UIViewController {
     }
     
     // MARK: IB actions.
+    
     @objc private func keyboardVisible(notification: NSNotification) {
         
         // Get the Size of the keyboard.
@@ -77,9 +86,24 @@ class LoginViewController: UIViewController {
         // Set the axis of the screen back to normal.
         self.view.frame.origin.y = 0
     }
+    
+    @objc private func loginButtonTap(_ sender: UIButton) {
         
+        // Password validation.
+        let password: String = self.passwordTF.text ?? ""
+        let passwordRange: NSRange = NSRange(password.startIndex..<password.endIndex, in: password)
+        let passwordValid = RegX.passwordRegex.matches(in: password, options: [], range: passwordRange)
+
+        self.view.layoutIfNeeded()
+        UIView.animate(withDuration: 0.3, animations: { () -> Void in
+            self.usernameVE.isHidden = !(self.usernameTF.text?.isEmpty ?? true)
+            self.passwordVE.isHidden = !(passwordValid.isEmpty)
+        })
+        
+    }
     
     // MARK: - Class methods.
+    
     private func setupUI() {
         
         // 1. Setup the app Logo.
@@ -92,6 +116,7 @@ class LoginViewController: UIViewController {
     private func setupAppLogo() {
         
         // Create a sub-view, the app logo will be centered to this view.
+        
         let subView = UIView()
         self.view.addSubview(subView)
         subView.attachToTop(self.view)
@@ -106,8 +131,26 @@ class LoginViewController: UIViewController {
         self.appLogo.widthAnchor.constraint(equalToConstant: 130).isActive = true
     }
     
+    private func TFSetup() {
+        
+        // Password field setup.
+        passwordTF.leftViewMode = .always
+        passwordTF.rightViewMode = .always
+        passwordTF.isSecureTextEntry = true
+        passwordTF.clearsOnBeginEditing = false
+        passwordTF.rightView = eye
+        passwordTF.leftView = lock
+        
+        // Username field setup.
+        usernameTF.leftViewMode = .always
+        usernameTF.rightViewMode = .always
+        usernameTF.leftView = person
+        usernameTF.rightView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 10))
+
+    }
+    
     private func commonTFSetup(_ sender: UITextField, hint: String) -> UITextField {
-        sender.placeholder = hint
+        sender.attributedPlaceholder = NSAttributedString(string: hint, attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         sender.backgroundColor = ColorConstants.backgroundColor
         sender.tfBeautify()
         
@@ -129,10 +172,31 @@ class LoginViewController: UIViewController {
         sender.setTitleColor(ColorConstants.primaryColor, for: .normal)
         sender.buttonBeautify()
         
+        // Setting up actions for the button.
+        sender.addTarget(self, action: #selector(loginButtonTap(_ :)), for: .touchUpInside)
+        
         return sender
     }
     
+    private func validationErrSetup(_ sender: [UILabel]) {
+        
+        for i in 0..<sender.count {
+            sender[i].textAlignment = NSTextAlignment.left
+            sender[i].font = sender[i].font.withSize(12)
+            sender[i].textColor = ColorConstants.errorColor
+            sender[i].numberOfLines = 0
+            sender[i].isHidden = true
+            sender[i].text = i == 0 ? StringConstants.usernameVE : StringConstants.passwordVE
+        }
+    }
+    
     private func stackContentSetup() {
+        
+        TFSetup()
+        
+        setupPrefixSuffixTF([eye, eyeSlash], isPrefix: false)
+        setupPrefixSuffixTF([lock, person], isPrefix: true)
+
         let subView = UIView()
         
         subView.backgroundColor = ColorConstants.primaryColor
@@ -142,6 +206,15 @@ class LoginViewController: UIViewController {
         subView.attachToBottom(self.view, bottom: 24, trailing: 8, leading: 8)
         subView.beautify(radius: 30.0)
         
+        // Adding the App version.
+        self.appVersion.text = StringConstants.appVersion
+        self.appVersion.font = self.appVersion.font.withSize(12)
+        self.appVersion.textColor = .white
+        self.appVersion.textAlignment = NSTextAlignment.center
+        subView.addSubview(appVersion)
+        self.appVersion.attachToBottom(subView)
+        
+        // Adding the stackview to the SubView.
         subView.addSubview(stackView)
         stackView.attachToTop(subView)
                 
@@ -149,7 +222,13 @@ class LoginViewController: UIViewController {
         stackView.axis = NSLayoutConstraint.Axis.vertical
         stackView.spacing = 8.0
         
-        self.addToStack(widgets: [appNameSetup(appName), commonTFSetup(usernameTF, hint: StringConstants.username), commonTFSetup(passwordTF, hint: StringConstants.password), loginButtonSetup(loginButton)])
+        self.validationErrSetup([usernameVE, passwordVE])
+        
+        // List of widget to be added to the stack.
+        let widgets: [UIView] = [appNameSetup(appName), commonTFSetup(usernameTF, hint: StringConstants.username), usernameVE, commonTFSetup(passwordTF, hint: StringConstants.password), passwordVE, loginButtonSetup(loginButton)]
+        
+                
+        self.addToStack(widgets: widgets)
         
         
     }
@@ -163,15 +242,38 @@ class LoginViewController: UIViewController {
     private func manageTFResponder() {
         switch activeTF {
         case self.usernameTF:
-            self.passwordTF.becomeFirstResponder()
+            let _ = self.passwordTF.becomeFirstResponder()
         default:
             self.passwordTF.resignFirstResponder()
         }
     }
     
+    private func setupPrefixSuffixTF(_ senders: [UIImageView], isPrefix: Bool) {
+        for sender in senders {
+            sender.heightAnchor.constraint(equalToConstant: 25).isActive = true
+            sender.widthAnchor.constraint(equalToConstant: 30).isActive = true
+            sender.tintColor = ColorConstants.primaryColor
+            
+            sender.isUserInteractionEnabled = true
+            
+            sender.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(toggleEye)))
+            
+            if (!isPrefix) {
+                sender.layer.transform = CATransform3DMakeTranslation(-14, 0, 8)
+            }
+            
+        }
+    }
+    
+    @objc private func toggleEye() {
+        passwordTF.isSecureTextEntry = !passwordTF.isSecureTextEntry
+        passwordTF.rightView = passwordTF.isSecureTextEntry ? eye : eyeSlash
+    }
+    
 }
 
 // MARK: - UI Text Field delegate.
+
 extension LoginViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {

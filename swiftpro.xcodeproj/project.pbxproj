@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		272FB56BC865B4F62827DE79 /* Pods_swiftpro_swiftproUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BB2E2EA9E773AA825257BDD /* Pods_swiftpro_swiftproUITests.framework */; };
 		C50AD1DD80334CFF37F27013 /* Pods_swiftproTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 548616E12984EC045F56E53F /* Pods_swiftproTests.framework */; };
+		C708FEAA2966A23800520EC4 /* RegX.swift in Sources */ = {isa = PBXBuildFile; fileRef = C708FEA92966A23800520EC4 /* RegX.swift */; };
 		C71717662963FC5300C60F4E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71717652963FC5300C60F4E /* LoginViewController.swift */; };
 		C71717682963FD0000C60F4E /* ColorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71717672963FD0000C60F4E /* ColorConstants.swift */; };
 		C7323539295B0D9800075DC0 /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7323538295B0D9800075DC0 /* Tree.swift */; };
@@ -25,7 +26,10 @@
 		C763EE1C295AC3BD00ED2115 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C763EE1B295AC3BD00ED2115 /* Stack.swift */; };
 		C763EE1E295AC4E000ED2115 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C763EE1D295AC4E000ED2115 /* Queue.swift */; };
 		C7B30E32295ADC58004C0937 /* LinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B30E31295ADC58004C0937 /* LinkedList.swift */; };
+		C7B5080329681C46009ACA72 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B5080229681C46009ACA72 /* DashboardViewController.swift */; };
+		C7B5080529682586009ACA72 /* SystemIconConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B5080429682586009ACA72 /* SystemIconConstants.swift */; };
 		C7BF123D295C818A00BA75E9 /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BF123C295C818A00BA75E9 /* StringConstants.swift */; };
+		C7D332B5296847A6006BE75C /* ASPasswordTF.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D332B4296847A6006BE75C /* ASPasswordTF.swift */; };
 		C7EEF402295D9DA200CB9DD8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EEF401295D9DA200CB9DD8 /* Extensions.swift */; };
 		DBEEBBB2AAC37C8107635339 /* Pods_swiftpro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7094EA45B3348BFB94B97383 /* Pods_swiftpro.framework */; };
 /* End PBXBuildFile section */
@@ -55,6 +59,7 @@
 		7094EA45B3348BFB94B97383 /* Pods_swiftpro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_swiftpro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BB2E2EA9E773AA825257BDD /* Pods_swiftpro_swiftproUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_swiftpro_swiftproUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5564176E9AFD2BC975B7D48 /* Pods-swiftpro-swiftproUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swiftpro-swiftproUITests.release.xcconfig"; path = "Target Support Files/Pods-swiftpro-swiftproUITests/Pods-swiftpro-swiftproUITests.release.xcconfig"; sourceTree = "<group>"; };
+		C708FEA92966A23800520EC4 /* RegX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegX.swift; sourceTree = "<group>"; };
 		C71717652963FC5300C60F4E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C71717672963FD0000C60F4E /* ColorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConstants.swift; sourceTree = "<group>"; };
 		C7323538295B0D9800075DC0 /* Tree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
@@ -75,7 +80,10 @@
 		C763EE1B295AC3BD00ED2115 /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		C763EE1D295AC4E000ED2115 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		C7B30E31295ADC58004C0937 /* LinkedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedList.swift; sourceTree = "<group>"; };
+		C7B5080229681C46009ACA72 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		C7B5080429682586009ACA72 /* SystemIconConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemIconConstants.swift; sourceTree = "<group>"; };
 		C7BF123C295C818A00BA75E9 /* StringConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConstants.swift; sourceTree = "<group>"; };
+		C7D332B4296847A6006BE75C /* ASPasswordTF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASPasswordTF.swift; sourceTree = "<group>"; };
 		C7EEF401295D9DA200CB9DD8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		DCA3D982ABFFA4CAC6309F80 /* Pods-swiftpro.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swiftpro.release.xcconfig"; path = "Target Support Files/Pods-swiftpro/Pods-swiftpro.release.xcconfig"; sourceTree = "<group>"; };
 		F9D899DF52DF970BC0E8E86B /* Pods-swiftpro.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swiftpro.debug.xcconfig"; path = "Target Support Files/Pods-swiftpro/Pods-swiftpro.debug.xcconfig"; sourceTree = "<group>"; };
@@ -132,9 +140,18 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		C708FEA82966A20C00520EC4 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C708FEA92966A23800520EC4 /* RegX.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		C71717622963F4E000C60F4E /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				C7D332B4296847A6006BE75C /* ASPasswordTF.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -164,6 +181,7 @@
 		C73DF79D2938BBE90098F018 /* swiftpro */ = {
 			isa = PBXGroup;
 			children = (
+				C708FEA82966A20C00520EC4 /* Utils */,
 				C71717622963F4E000C60F4E /* Common */,
 				C7EEF400295D9D9000CB9DD8 /* Extensions */,
 				C7BF123B295C817F00BA75E9 /* Constants */,
@@ -217,11 +235,20 @@
 			path = DataStructures;
 			sourceTree = "<group>";
 		};
+		C7B5080129681C37009ACA72 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				C7B5080229681C46009ACA72 /* DashboardViewController.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
 		C7BF123B295C817F00BA75E9 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
 				C7BF123C295C818A00BA75E9 /* StringConstants.swift */,
 				C71717672963FD0000C60F4E /* ColorConstants.swift */,
+				C7B5080429682586009ACA72 /* SystemIconConstants.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -229,6 +256,7 @@
 		C7E44D58295B076700863107 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				C7B5080129681C37009ACA72 /* Dashboard */,
 				C7EEF3FD295D976700CB9DD8 /* Login */,
 			);
 			path = Modules;
@@ -464,10 +492,14 @@
 				C73DF7A12938BBE90098F018 /* SceneDelegate.swift in Sources */,
 				C732353B295B165200075DC0 /* BinaryTree.swift in Sources */,
 				C7323539295B0D9800075DC0 /* Tree.swift in Sources */,
+				C7B5080329681C46009ACA72 /* DashboardViewController.swift in Sources */,
+				C708FEAA2966A23800520EC4 /* RegX.swift in Sources */,
 				C73DF7A92938BBE90098F018 /* swiftpro.xcdatamodeld in Sources */,
 				C7BF123D295C818A00BA75E9 /* StringConstants.swift in Sources */,
 				C7EEF402295D9DA200CB9DD8 /* Extensions.swift in Sources */,
+				C7B5080529682586009ACA72 /* SystemIconConstants.swift in Sources */,
 				C7B30E32295ADC58004C0937 /* LinkedList.swift in Sources */,
+				C7D332B5296847A6006BE75C /* ASPasswordTF.swift in Sources */,
 				C71717662963FC5300C60F4E /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

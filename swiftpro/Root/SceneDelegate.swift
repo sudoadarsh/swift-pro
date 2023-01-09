@@ -25,10 +25,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         
+        let navigationController = UINavigationController()
+        
         // The [LoginViewController].
         let vc = LoginViewController()
         // Setting the [LoginViewController] as the root view manually.
-        window?.rootViewController = vc
+        navigationController.viewControllers = [vc]
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
 
