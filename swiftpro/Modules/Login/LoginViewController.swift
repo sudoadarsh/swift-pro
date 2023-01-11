@@ -45,6 +45,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.hidesBackButton = true
+        
         // The background color.
         view.backgroundColor = ColorConstants.backgroundColor
         
@@ -74,7 +76,7 @@ class LoginViewController: UIViewController {
             let topOfKeyboard = self.view.frame.height - keyboardSize.height
             self.view.layoutIfNeeded()
             if bottomOfTF > topOfKeyboard {
-                UIView.animate(withDuration: 0.3, animations: { () -> Void in
+                UIView.animate(withDuration: 1, animations: { () -> Void in
                     self.view.frame.origin.y = 0 - keyboardSize.height
                     self.view.layoutIfNeeded()
                 })
@@ -108,6 +110,11 @@ class LoginViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
         // Remove the [LoginViewController] from the stack.
         self.navigationController?.viewControllers.remove(at: 0)
+    }
+    
+    @objc private func toggleEye() {
+        passwordTF.isSecureTextEntry = !passwordTF.isSecureTextEntry
+        passwordTF.rightView = passwordTF.isSecureTextEntry ? eye : eyeSlash
     }
     
     // MARK: - Class methods.
@@ -323,10 +330,6 @@ class LoginViewController: UIViewController {
         }
     }
     
-    @objc private func toggleEye() {
-        passwordTF.isSecureTextEntry = !passwordTF.isSecureTextEntry
-        passwordTF.rightView = passwordTF.isSecureTextEntry ? eye : eyeSlash
-    }
     
 }
 
@@ -342,7 +345,7 @@ extension LoginViewController: UITextFieldDelegate {
         self.activeTF = nil
     }
     
-    // To close the keyboard when user is presses [Return].
+    // To close the keyboard when user presses [Return].
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.manageTFResponder()
         return false
