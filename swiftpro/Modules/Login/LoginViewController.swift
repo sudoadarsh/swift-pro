@@ -25,10 +25,10 @@ class LoginViewController: UIViewController {
     private lazy var appLogo: UIImageView = UIImageView()
     private lazy var appName: UILabel = UILabel()
     private lazy var loginButton: UIButton = UIButton()
-    private lazy var continueWithGoogle: UIButton = UIButton()
-    private lazy var continueWithApple: UIButton = UIButton()
     private lazy var usernameTF: UITextField = UITextField()
     private lazy var passwordTF: ASPasswordTF = ASPasswordTF()
+    private lazy var google: UIImageView = UIImageView()
+    private lazy var apple: UIImageView = UIImageView()
     private lazy var signInLink: UILabel = UILabel()
     private lazy var stackView = UIStackView()
     private var activeTF: UITextField?
@@ -185,22 +185,7 @@ class LoginViewController: UIViewController {
         
         return sender
     }
-    
-    private func googleLoginSetup() -> UIButton {
-        continueWithGoogle.backgroundColor = UIColor.red
-        continueWithGoogle.setTitle(StringConstants.continueWithGoogle, for: .normal)
-        continueWithGoogle.buttonBeautify()
-        
-        return continueWithGoogle
-    }
-    
-    private func appleLoginSetup() -> UIButton {
-        continueWithApple.backgroundColor = UIColor.black
-        continueWithApple.setTitle(StringConstants.continueWithApple, for: .normal)
-        continueWithApple.buttonBeautify()
-        
-        return continueWithApple
-    }
+
     
     private func signInLinkSetup() -> UILabel {
         signInLink.attributedText = NSAttributedString(string: StringConstants.dontHaveAnAccount, attributes: [NSAttributedString.Key.foregroundColor: ColorConstants.backgroundColor])
@@ -225,6 +210,26 @@ class LoginViewController: UIViewController {
         }
     }
     
+    private func socialAuthButton(_ sender: UIImageView, isGoogle: Bool) -> UIImageView {
+        
+        if isGoogle {
+            // Set the dimensions.
+            sender.heightAnchor.constraint(equalToConstant: 45).isActive = true
+            sender.widthAnchor.constraint(equalToConstant: 45).isActive = true
+            
+            sender.image = UIImage(named: AssetConstants.google)
+            return sender
+        }
+        
+        // Set the dimensions.
+        sender.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        sender.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        sender.image = UIImage(named: AssetConstants.apple)
+        
+        return sender
+    }
+    
     private func stackContentSetup() {
         
         TFSetup()
@@ -240,6 +245,7 @@ class LoginViewController: UIViewController {
         subView.halfOfScreen(self.view)
         subView.attachToBottom(self.view, bottom: 24, trailing: 8, leading: 8)
         subView.beautify(radius: 30.0)
+    
         
         // Adding the App version.
         self.appVersion.text = StringConstants.appVersion
@@ -248,6 +254,23 @@ class LoginViewController: UIViewController {
         self.appVersion.textAlignment = NSTextAlignment.center
         subView.addSubview(appVersion)
         self.appVersion.attachToBottom(subView)
+        
+        // Adding the social auth.
+        let googleView = socialAuthButton(google, isGoogle: true)
+        let appleView = socialAuthButton(apple, isGoogle: false)
+        
+        subView.addSubview(appleView)
+        subView.addSubview(googleView)
+        
+        googleView.translatesAutoresizingMaskIntoConstraints = false
+        googleView.centerXAnchor.constraint(equalTo: subView.centerXAnchor, constant: 35).isActive = true
+        googleView.bottomAnchor.constraint(equalTo: self.appVersion.topAnchor, constant: -10).isActive = true
+        appleView.translatesAutoresizingMaskIntoConstraints = false
+        appleView.bottomAnchor.constraint(equalTo: self.appVersion.topAnchor, constant: -10).isActive = true
+        
+        let horizontalSpace = NSLayoutConstraint(item: googleView, attribute: .leading, relatedBy: .equal, toItem: appleView, attribute: .trailing, multiplier: 1, constant: 20)
+        
+        NSLayoutConstraint.activate([horizontalSpace])
         
         // Adding the stackview to the SubView.
         subView.addSubview(stackView)
@@ -260,12 +283,12 @@ class LoginViewController: UIViewController {
         self.validationErrSetup([usernameVE, passwordVE])
         
         // List of widget to be added to the stack.
-        let widgets: [UIView] = [appNameSetup(appName), commonTFSetup(usernameTF, hint: StringConstants.username), usernameVE, commonTFSetup(passwordTF, hint: StringConstants.password), passwordVE, loginButtonSetup(loginButton), googleLoginSetup(), appleLoginSetup(), signInLinkSetup()]
+        let widgets: [UIView] = [appNameSetup(appName), commonTFSetup(usernameTF, hint: StringConstants.username), usernameVE, commonTFSetup(passwordTF, hint: StringConstants.password), passwordVE, loginButtonSetup(loginButton), signInLinkSetup()]
         
                 
         self.addToStack(widgets: widgets)
         
-        
+                
     }
     
     private func addToStack(widgets: [UIView]) {

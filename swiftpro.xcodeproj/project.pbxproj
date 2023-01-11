@@ -32,6 +32,7 @@
 		C7BF123D295C818A00BA75E9 /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BF123C295C818A00BA75E9 /* StringConstants.swift */; };
 		C7D332B5296847A6006BE75C /* ASPasswordTF.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D332B4296847A6006BE75C /* ASPasswordTF.swift */; };
 		C7EEF402295D9DA200CB9DD8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7EEF401295D9DA200CB9DD8 /* Extensions.swift */; };
+		C7F25C7A296ED22C0061B616 /* ASProviderAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F25C79296ED22C0061B616 /* ASProviderAuth.swift */; };
 		DBEEBBB2AAC37C8107635339 /* Pods_swiftpro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7094EA45B3348BFB94B97383 /* Pods_swiftpro.framework */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +88,7 @@
 		C7BF123C295C818A00BA75E9 /* StringConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConstants.swift; sourceTree = "<group>"; };
 		C7D332B4296847A6006BE75C /* ASPasswordTF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASPasswordTF.swift; sourceTree = "<group>"; };
 		C7EEF401295D9DA200CB9DD8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		C7F25C79296ED22C0061B616 /* ASProviderAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASProviderAuth.swift; sourceTree = "<group>"; };
 		DCA3D982ABFFA4CAC6309F80 /* Pods-swiftpro.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swiftpro.release.xcconfig"; path = "Target Support Files/Pods-swiftpro/Pods-swiftpro.release.xcconfig"; sourceTree = "<group>"; };
 		F9D899DF52DF970BC0E8E86B /* Pods-swiftpro.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swiftpro.debug.xcconfig"; path = "Target Support Files/Pods-swiftpro/Pods-swiftpro.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -154,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				C7D332B4296847A6006BE75C /* ASPasswordTF.swift */,
+				C7F25C79296ED22C0061B616 /* ASProviderAuth.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -500,6 +503,7 @@
 				C763EE1C295AC3BD00ED2115 /* Stack.swift in Sources */,
 				C73DF79F2938BBE90098F018 /* AppDelegate.swift in Sources */,
 				C71717682963FD0000C60F4E /* ColorConstants.swift in Sources */,
+				C7F25C7A296ED22C0061B616 /* ASProviderAuth.swift in Sources */,
 				C73DF7A12938BBE90098F018 /* SceneDelegate.swift in Sources */,
 				C732353B295B165200075DC0 /* BinaryTree.swift in Sources */,
 				C7323539295B0D9800075DC0 /* Tree.swift in Sources */,

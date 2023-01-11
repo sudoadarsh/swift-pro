@@ -16,8 +16,6 @@ struct StringConstants {
     static let appDisplayName: String = "Uncharted"
     static let passwordVE: String = "Password must contain at least 6 characters, a number and a special character."
     static let usernameVE: String = "Please enter a valid Username."
-    static let continueWithApple: String = "Continue with Apple"
-    static let continueWithGoogle: String = "Continue with Google"
     static let dpNote: String = "Set your Display Picture"
 }
 
@@ -28,4 +26,5 @@ struct AssetConstants {
     static let google: String = "google.png"
     static let logo: String = "app_logo.png"
     static let defaultProfile: String = "person.crop.circle.fill.badge.plus"
+    static let apple: String = "apple"
 }

@@ -11,6 +11,14 @@ class SignInViewController: UIViewController {
     
     private lazy var userDp: UIImageView = UIImageView()
     private lazy var dpNote: UILabel = UILabel()
+    
+    // The text fields.
+    private lazy var usernameTF: UITextField = UITextField()
+    private lazy var passwordTF: UITextField = UITextField()
+    private lazy var emailTF: UITextField = UITextField()
+    
+    // The buttons.
+    private lazy var signInButton: UIButton = UIButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,12 +48,14 @@ class SignInViewController: UIViewController {
     private func userDpSetup() {
         
         // Sub View to attach the User DP.
+        
         let subView = UIView()
         self.view.addSubview(subView)
         subView.attachToTop(self.view)
         subView.halfOfScreen(self.view)
         
         // Get the default profile image.
+        
         var image: UIImage? = UIImage()
         image = UIImage(systemName: AssetConstants.defaultProfile)
         
