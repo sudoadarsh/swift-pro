@@ -25,8 +25,11 @@ class LoginViewController: UIViewController {
     private lazy var appLogo: UIImageView = UIImageView()
     private lazy var appName: UILabel = UILabel()
     private lazy var loginButton: UIButton = UIButton()
+    private lazy var continueWithGoogle: UIButton = UIButton()
+    private lazy var continueWithApple: UIButton = UIButton()
     private lazy var usernameTF: UITextField = UITextField()
     private lazy var passwordTF: ASPasswordTF = ASPasswordTF()
+    private lazy var signInLink: UILabel = UILabel()
     private lazy var stackView = UIStackView()
     private var activeTF: UITextField?
     private lazy var usernameVE: UILabel = UILabel()
@@ -77,8 +80,6 @@ class LoginViewController: UIViewController {
                 })
             }
         }
-        
-        
     }
     
     @objc private func keyboardHidden(notification: NSNotification) {
@@ -100,6 +101,13 @@ class LoginViewController: UIViewController {
             self.passwordVE.isHidden = !(passwordValid.isEmpty)
         })
         
+    }
+    
+    @objc private func navToSignInController() {
+        let vc = SignInViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+        // Remove the [LoginViewController] from the stack.
+        self.navigationController?.viewControllers.remove(at: 0)
     }
     
     // MARK: - Class methods.
@@ -178,6 +186,33 @@ class LoginViewController: UIViewController {
         return sender
     }
     
+    private func googleLoginSetup() -> UIButton {
+        continueWithGoogle.backgroundColor = UIColor.red
+        continueWithGoogle.setTitle(StringConstants.continueWithGoogle, for: .normal)
+        continueWithGoogle.buttonBeautify()
+        
+        return continueWithGoogle
+    }
+    
+    private func appleLoginSetup() -> UIButton {
+        continueWithApple.backgroundColor = UIColor.black
+        continueWithApple.setTitle(StringConstants.continueWithApple, for: .normal)
+        continueWithApple.buttonBeautify()
+        
+        return continueWithApple
+    }
+    
+    private func signInLinkSetup() -> UILabel {
+        signInLink.attributedText = NSAttributedString(string: StringConstants.dontHaveAnAccount, attributes: [NSAttributedString.Key.foregroundColor: ColorConstants.backgroundColor])
+        signInLink.textAlignment = NSTextAlignment.center
+        
+        // Navigate user to the sign-in page when tapped on this label.
+        signInLink.isUserInteractionEnabled = true
+        signInLink.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(navToSignInController)))
+        
+        return signInLink
+    }
+    
     private func validationErrSetup(_ sender: [UILabel]) {
         
         for i in 0..<sender.count {
@@ -225,7 +260,7 @@ class LoginViewController: UIViewController {
         self.validationErrSetup([usernameVE, passwordVE])
         
         // List of widget to be added to the stack.
-        let widgets: [UIView] = [appNameSetup(appName), commonTFSetup(usernameTF, hint: StringConstants.username), usernameVE, commonTFSetup(passwordTF, hint: StringConstants.password), passwordVE, loginButtonSetup(loginButton)]
+        let widgets: [UIView] = [appNameSetup(appName), commonTFSetup(usernameTF, hint: StringConstants.username), usernameVE, commonTFSetup(passwordTF, hint: StringConstants.password), passwordVE, loginButtonSetup(loginButton), googleLoginSetup(), appleLoginSetup(), signInLinkSetup()]
         
                 
         self.addToStack(widgets: widgets)

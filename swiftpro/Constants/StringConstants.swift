@@ -11,12 +11,14 @@ struct StringConstants {
     static let login: String = "Login"
     static let username: String = "Username"
     static let password: String = "Password"
-    static let continueWithGoogle = "Continue with Google"
     static let appVersion: String = "Uncharted 1.0.0"
     static let dontHaveAnAccount: String = "Don't have an account? Sign-in"
     static let appDisplayName: String = "Uncharted"
     static let passwordVE: String = "Password must contain at least 6 characters, a number and a special character."
     static let usernameVE: String = "Please enter a valid Username."
+    static let continueWithApple: String = "Continue with Apple"
+    static let continueWithGoogle: String = "Continue with Google"
+    static let dpNote: String = "Set your Display Picture"
 }
 
 
@@ -25,4 +27,5 @@ struct StringConstants {
 struct AssetConstants {
     static let google: String = "google.png"
     static let logo: String = "app_logo.png"
+    static let defaultProfile: String = "person.crop.circle.fill.badge.plus"
 }

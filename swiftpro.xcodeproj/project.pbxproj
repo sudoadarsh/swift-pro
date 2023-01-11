@@ -23,6 +23,7 @@
 		C73DF7B92938BBEB0098F018 /* swiftproTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73DF7B82938BBEB0098F018 /* swiftproTests.swift */; };
 		C73DF7C32938BBEB0098F018 /* swiftproUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73DF7C22938BBEB0098F018 /* swiftproUITests.swift */; };
 		C73DF7C52938BBEB0098F018 /* swiftproUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73DF7C42938BBEB0098F018 /* swiftproUITestsLaunchTests.swift */; };
+		C755B664296DAE06006D3E45 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C755B663296DAE06006D3E45 /* SignInViewController.swift */; };
 		C763EE1C295AC3BD00ED2115 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C763EE1B295AC3BD00ED2115 /* Stack.swift */; };
 		C763EE1E295AC4E000ED2115 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C763EE1D295AC4E000ED2115 /* Queue.swift */; };
 		C7B30E32295ADC58004C0937 /* LinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B30E31295ADC58004C0937 /* LinkedList.swift */; };
@@ -77,6 +78,7 @@
 		C73DF7BE2938BBEB0098F018 /* swiftproUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = swiftproUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C73DF7C22938BBEB0098F018 /* swiftproUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftproUITests.swift; sourceTree = "<group>"; };
 		C73DF7C42938BBEB0098F018 /* swiftproUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftproUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C755B663296DAE06006D3E45 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		C763EE1B295AC3BD00ED2115 /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		C763EE1D295AC4E000ED2115 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		C7B30E31295ADC58004C0937 /* LinkedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedList.swift; sourceTree = "<group>"; };
@@ -214,6 +216,14 @@
 			path = swiftproUITests;
 			sourceTree = "<group>";
 		};
+		C755B662296DADF7006D3E45 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				C755B663296DAE06006D3E45 /* SignInViewController.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
 		C763EE19295AC38400ED2115 /* Root */ = {
 			isa = PBXGroup;
 			children = (
@@ -256,6 +266,7 @@
 		C7E44D58295B076700863107 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				C755B662296DADF7006D3E45 /* SignIn */,
 				C7B5080129681C37009ACA72 /* Dashboard */,
 				C7EEF3FD295D976700CB9DD8 /* Login */,
 			);
@@ -492,6 +503,7 @@
 				C73DF7A12938BBE90098F018 /* SceneDelegate.swift in Sources */,
 				C732353B295B165200075DC0 /* BinaryTree.swift in Sources */,
 				C7323539295B0D9800075DC0 /* Tree.swift in Sources */,
+				C755B664296DAE06006D3E45 /* SignInViewController.swift in Sources */,
 				C7B5080329681C46009ACA72 /* DashboardViewController.swift in Sources */,
 				C708FEAA2966A23800520EC4 /* RegX.swift in Sources */,
 				C73DF7A92938BBE90098F018 /* swiftpro.xcdatamodeld in Sources */,

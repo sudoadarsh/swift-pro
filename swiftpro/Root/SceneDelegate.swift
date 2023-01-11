@@ -28,7 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let navigationController = UINavigationController()
         
         // The [LoginViewController].
-        let vc = LoginViewController()
+        let vc = SignInViewController()
         // Setting the [LoginViewController] as the root view manually.
         navigationController.viewControllers = [vc]
         window?.rootViewController = navigationController
