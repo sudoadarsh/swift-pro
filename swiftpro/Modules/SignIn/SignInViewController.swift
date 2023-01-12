@@ -7,11 +7,19 @@
 
 import UIKit
 
+/// This protocol will be implemented by the [SignInViewController] and will receive inputs from [SignInPresenterDelegate].
+protocol SignInViewDelegate: AnyObject {
+    func updateDP(image: UIImage)
+    func displayError()
+}
+
 class SignInViewController: UIViewController {
     
     // MARK: - Class properties.
     
+    // MISC
     private lazy var userDp: UIImageView = UIImageView()
+    private lazy var userDpPlus: UIImageView = UIImageView()
     private lazy var dpNote: UILabel = UILabel()
     private lazy var appName: UILabel = UILabel()
     private lazy var appVersion: UILabel = UILabel()
@@ -91,11 +99,7 @@ class SignInViewController: UIViewController {
     }
     
     @objc private func keyboardWillHide(notification: NSNotification) {
-        
-        
         self.view.frame.origin.y = 0
-        
-        
     }
     
     @objc private func toggleEye() {
@@ -111,6 +115,13 @@ class SignInViewController: UIViewController {
         let vc = LoginViewController()
         self.navigationController?.pushViewController(vc, animated: true)
         self.navigationController?.viewControllers.remove(at: 0)
+    }
+    
+    @objc private func dpTap() {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        present(picker, animated: true)
     }
     
     // MARK: - Class methods.
@@ -156,6 +167,23 @@ class SignInViewController: UIViewController {
         dpNote.translatesAutoresizingMaskIntoConstraints = false
         dpNote.topAnchor.constraint(equalTo: userDp.bottomAnchor, constant: 10).isActive = true
         dpNote.centerXAnchor.constraint(equalTo: subView.centerXAnchor).isActive = true
+        
+        // Adding interactivity to the Display picture.
+        
+        userDp.isUserInteractionEnabled = true
+        userDp.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dpTap)))
+        
+        // Adding a plus image on top of the default display picture.
+        
+        userDpPlus.image =  UIImage(named: AssetConstants.plus)?.circularImage(size: nil)
+        userDpPlus.tintColor = ColorConstants.green
+        userDp.addSubview(userDpPlus)
+        
+        userDpPlus.translatesAutoresizingMaskIntoConstraints = false
+        userDpPlus.trailingAnchor.constraint(equalTo: userDp.trailingAnchor, constant: -10).isActive = true
+        userDpPlus.bottomAnchor.constraint(equalTo: userDp.bottomAnchor, constant: -10).isActive = true
+        userDpPlus.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        userDpPlus.widthAnchor.constraint(equalToConstant: 30).isActive = true
         
     }
     
@@ -206,7 +234,7 @@ class SignInViewController: UIViewController {
     
     private func signInButtonSetup(_ sender: UIButton) -> UIButton {
         sender.backgroundColor = ColorConstants.backgroundColor
-        sender.setTitle(StringConstants.login, for: .normal)
+        sender.setTitle(StringConstants.signIn, for: .normal)
         sender.setTitleColor(ColorConstants.primaryColor, for: .normal)
         sender.buttonBeautify()
         
@@ -354,5 +382,37 @@ extension SignInViewController: UITextFieldDelegate {
         self.manageResponders()
         
         return false
+    }
+}
+
+// MARK: - SignInViewDelegate.
+
+extension SignInViewController: SignInViewDelegate {
+    func displayError() {
+        // TODO: Display error fetching Display Picture. 
+    }
+    
+    
+    func updateDP(image: UIImage) {
+        self.userDp.image = image
+    }
+    
+}
+
+// MARK: - UIImagePickerControllerDelegate.
+
+extension SignInViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    // Picked an image.
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        guard let image = info[.editedImage] as? UIImage else {
+            return
+        }
+    
+        
+        userDp.image = image.circularImage(size: nil)
+        
+        dismiss(animated: true)
     }
 }

@@ -14,5 +14,6 @@ struct SystemIconConstants {
     static let lock: UIImage? = UIImage(systemName: "lock")
     static let person: UIImage? = UIImage(systemName: "person")
     static let mail: UIImage? = UIImage(systemName: "mail")
-    static let defaultProfile: UIImage? = UIImage(systemName: "person.crop.circle.fill.badge.plus")
+    static let defaultProfile: UIImage? = UIImage(systemName: "person.circle.fill")
+    static let add: UIImage? = UIImage(systemName: "plus.app.fill")
 }
